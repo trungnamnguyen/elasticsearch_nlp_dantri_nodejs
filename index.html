@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Elasticsearch Javascript</title>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="elasticsearch.jquery.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+
+    <!-- <script>
+        $(document).ready(function () {
+            $('#search').click(function () {
+                console.log($("input").val())
+                search($("input").val()).then(function (response) {
+                    var ar = [];
+                    ar = response.hits.hits;
+                    console.log(ar)
+                    console.log(ar[0]._source.title)
+                })
+            })
+        })
+    </script> -->
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <form>
+            <input type="text" placeholder="search" ng-model="data">
+            <input type="text" placeholder="quantify" ng-model="quantify">
+            <button type="submit" ng-click="search(data, quantify)">Search</button>
+        </form>
+        <ul>
+            <li ng-repeat="item in ar">
+                <a href="http://localhost:8888/{{item._id}}">{{item._source.title}}</a>
+                <p>score:{{item._score}}</p>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
